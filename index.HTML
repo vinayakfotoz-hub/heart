@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Do You Love Me?</title>
+
+<style>
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    font-family:Arial;
+    background:linear-gradient(135deg,#ff9a9e,#fecfef);
+    overflow:hidden;
+}
+
+h1{
+    font-size:45px;
+    color:white;
+    text-shadow:2px 2px 5px black;
+}
+
+button{
+    border:none;
+    border-radius:30px;
+    cursor:pointer;
+    transition:0.2s;
+}
+
+#yes{
+    padding:20px 50px;
+    font-size:28px;
+    background:#00c853;
+    color:white;
+    margin:20px;
+}
+
+#no{
+    padding:10px 25px;
+    font-size:18px;
+    background:#ff1744;
+    color:white;
+    position:absolute;
+}
+
+.heart{
+    position:absolute;
+    font-size:25px;
+    animation:float 4s linear infinite;
+}
+
+@keyframes float{
+    from{
+        transform:translateY(100vh);
+        opacity:1;
+    }
+    to{
+        transform:translateY(-10vh);
+        opacity:0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<h1>Do You Love Me? ❤️</h1>
+
+<button id="yes" onclick="yesClick()">YES</button>
+<button id="no" onmouseover="moveButton()">NO</button>
+
+<script>
+
+function yesClick(){
+    document.body.innerHTML="<h1 style='color:white'>I knew you love me ❤️🥰</h1>";
+}
+
+function moveButton(){
+    var x=Math.random()*window.innerWidth;
+    var y=Math.random()*window.innerHeight;
+
+    var btn=document.getElementById("no");
+    btn.style.left=x+"px";
+    btn.style.top=y+"px";
+}
+
+setInterval(function(){
+    var heart=document.createElement("div");
+    heart.className="heart";
+    heart.innerHTML="❤️";
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.fontSize=(20+Math.random()*30)+"px";
+    document.body.appendChild(heart);
+
+    setTimeout(()=>heart.remove(),4000);
+},300);
+
+</script>
+
+</body>
+</html>
